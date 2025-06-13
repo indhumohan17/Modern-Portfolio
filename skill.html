@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.html">
+</head>
+<body>
+     <div class="navbar">
+          <!-- navbar -->
+<nav class="navbar">
+    <ul class="link-group">
+        <li class="link "><a href="index.html">home</a></li>
+        <li class="link"><a href="projects.html">projects</a></li>
+        <li class="link"><a href="about.html">about</a></li>
+        <li class="link active"><a href="skill.html">skills</a></li>
+        <li class="link"><a href="contact.html">contact</a></li>
+    </ul>
+</nav>
+      </div>
+       <!-- skills -->
+<div class="skill-section active">
+    <h1 class="heading">skills</h1>
+    <div class="skills-container">
+        <div class="skill-card">
+            <img src="img/pngegg.png" class="skill-img" alt="">
+            <div class="skill-level">98%</div>
+            <h1 class="skill-name">HTML</h1>
+            <p class="skill-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, delectus!</p>
+        </div>
+        <div class="skill-card">
+            <img src="img/pngegg (1).png" class="skill-img" alt="">
+            <div class="skill-level">90%</div>
+            <h1 class="skill-name">CSS</h1>
+            <p class="skill-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, delectus!</p>
+        </div>
+        <div class="skill-card">
+            <img src="img/pngegg (2).png" class="skill-img" alt="">
+            <div class="skill-level">85%</div>
+            <h1 class="skill-name">JavaScript</h1>
+            <p class="skill-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, delectus!</p>
+        </div>
+        <div class="skill-card">
+            <img src="img/pngegg (3).png" class="skill-img" alt="">
+            <div class="skill-level">70%</div>
+            <h1 class="skill-name">React</h1>
+            <p class="skill-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, delectus!</p>
+        </div>
+        <div class="skill-card">
+            <img src="img/pngegg (4).png" class="skill-img" alt="">
+            <div class="skill-level">75%</div>
+            <h1 class="skill-name">Bootstrap</h1>
+            <p class="skill-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, delectus!</p>
+        </div>
+        <div class="skill-card ">
+            <img src="img/pngegg (5).png" class="skill-img" alt="">
+            <div class="skill-level">69%</div>
+            <h1 class="skill-name">Git/GitHub</h1>
+            <p class="skill-info">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur, delectus!</p>
+        </div>
+    </div>
+</section>
+</div>
+  <div id="cursor"></div>
+<div id="cursor-border"></div>
+<script src="style.js">
+    const form = document.querySelector('.contact-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        fetch(form.action, {
+            method: form.method,
+            body: formData
+        });
+    });
+</script>
+<script src="animation.js"></script>
+<script >
+        const cursor = document.querySelector("#cursor");
+const cursorBorder = document.querySelector("#cursor-border");
+const cursorPos = { x: 0, y: 0 };
+const cursorBorderPos = { x: 0, y: 0 };
+
+document.addEventListener("mousemove", (e) => {
+  cursorPos.x = e.clientX;
+  cursorPos.y = e.clientY;
+
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+});
+
+requestAnimationFrame(function loop() {
+  const easting = 8;
+  cursorBorderPos.x += (cursorPos.x - cursorBorderPos.x) / easting;
+  cursorBorderPos.y += (cursorPos.y - cursorBorderPos.y) / easting;
+
+  cursorBorder.style.transform = `translate(${cursorBorderPos.x}px, ${cursorBorderPos.y}px)`;
+  requestAnimationFrame(loop);
+});
+
+document.querySelectorAll("[data-cursor]").forEach((item) => {
+  item.addEventListener("mouseover", (e) => {
+    if (item.dataset.cursor === "pointer") {
+      cursorBorder.style.backgroundColor = "rgba(255, 255, 255, .6)";
+      cursorBorder.style.setProperty("--size", "30px");
+    }
+    if (item.dataset.cursor === "pointer2") {
+      cursorBorder.style.backgroundColor = "white";
+      cursorBorder.style.mixBlendMode = "difference";
+      cursorBorder.style.setProperty("--size", "80px");
+    }
+  });
+  item.addEventListener("mouseout", (e) => {
+    cursorBorder.style.backgroundColor = "unset";
+    cursorBorder.style.mixBlendMode = "unset";
+    cursorBorder.style.setProperty("--size", "50px");
+  });
+});
+
+    </script>
+</body>
+</html>

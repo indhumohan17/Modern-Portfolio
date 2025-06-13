@@ -1,0 +1,84 @@
+    
+    <div class="cursor-dot active" data-cursor-dot></div>
+<div class="cursor-outline active" data-cursor-outline></div>
+    
+    <script >
+        const cursorDot = document.querySelector('[data-cursor-dot]');
+        const cursorOutline = document.querySelector('[data-cursor-outline]');
+        window.addEventListener('mousemove', function (e)  {
+           const posX = e.clientX;
+              const posY = e.clientY;
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
+
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: 'forwards' });
+            });
+    
+    </script>
+    <style>
+        .cursor-dot{
+    width: 5px;
+    height: 5px;
+    background-color: #ff4f4f;
+}
+.cursor-outline{
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ff4f4f;
+}
+.cursor-dot,
+.cursor-outline{
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 10;
+    pointer-events: none;
+}
+.cursor-dot {
+    transition: transform 0.1s ease;
+}
+.cursor-outline {
+    transition: transform 0.1s ease;
+    opacity: 0.5;
+}
+.cursor-dot.active,
+.cursor-outline.active {
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: transform 0.1s ease;
+    opacity: 1;
+    transition-delay: 0.1s;
+    box-shadow: 0 0 10px rgba(255, 79, 79, 0.5);    
+    transition: box-shadow 0.1s ease;
+    
+}
+.cursor-dot.active {
+    background-color: #ff4f4f;
+    opacity: 1;
+}
+.cursor-outline.active {
+    border-color: #ff4f4f;
+    opacity: 1;
+}
+.cursor-dot:hover,
+.cursor-outline:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: transform 0.1s ease;
+    opacity: 1;
+}
+.cursor-dot:hover {
+    background-color: #ff4f4f;
+    
+}
+.cursor-outline:hover {
+    border-color: #ff4f4f;
+    opacity: 1;
+}
+    </style>
