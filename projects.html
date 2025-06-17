@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index.html">
-    <title>Document</title>
+    <title>My Portfolio</title>
 </head>
 <body>
      <div class="navbar">
           <!-- navbar -->
 <nav class="navbar">
     <ul class="link-group">
+        <img src="img/icons8-jira-48.png" alt="Logo" class="navbar-logo" style=" width: 50px; height: 50px; border-radius: 50%;">
+            <h1 class="navbar-title" style="color: white; margin-right: 10rem;">Sathish</h1>
         <li class="link "><a href="index.html">home</a></li>
         <li class="link active"><a href="projects.html">projects</a></li>
         <li class="link"><a href="about.html">about</a></li>
@@ -68,47 +70,6 @@
     });
 </script>
 <script src="animation.js"></script>
-<script >
-        const cursor = document.querySelector("#cursor");
-const cursorBorder = document.querySelector("#cursor-border");
-const cursorPos = { x: 0, y: 0 };
-const cursorBorderPos = { x: 0, y: 0 };
-
-document.addEventListener("mousemove", (e) => {
-  cursorPos.x = e.clientX;
-  cursorPos.y = e.clientY;
-
-  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-});
-
-requestAnimationFrame(function loop() {
-  const easting = 8;
-  cursorBorderPos.x += (cursorPos.x - cursorBorderPos.x) / easting;
-  cursorBorderPos.y += (cursorPos.y - cursorBorderPos.y) / easting;
-
-  cursorBorder.style.transform = `translate(${cursorBorderPos.x}px, ${cursorBorderPos.y}px)`;
-  requestAnimationFrame(loop);
-});
-
-document.querySelectorAll("[data-cursor]").forEach((item) => {
-  item.addEventListener("mouseover", (e) => {
-    if (item.dataset.cursor === "pointer") {
-      cursorBorder.style.backgroundColor = "rgba(255, 255, 255, .6)";
-      cursorBorder.style.setProperty("--size", "30px");
-    }
-    if (item.dataset.cursor === "pointer2") {
-      cursorBorder.style.backgroundColor = "white";
-      cursorBorder.style.mixBlendMode = "difference";
-      cursorBorder.style.setProperty("--size", "80px");
-    }
-  });
-  item.addEventListener("mouseout", (e) => {
-    cursorBorder.style.backgroundColor = "unset";
-    cursorBorder.style.mixBlendMode = "unset";
-    cursorBorder.style.setProperty("--size", "50px");
-  });
-});
-
-    </script>
+<script src="cursor.js"></script>
 </body>
 </html>
